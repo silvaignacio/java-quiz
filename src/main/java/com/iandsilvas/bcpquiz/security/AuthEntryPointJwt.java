@@ -1,6 +1,5 @@
 package com.iandsilvas.bcpquiz.security;
 
-import com.iandsilvas.bcpquiz.controller.ChangeController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.web.AuthenticationEntryPoint;

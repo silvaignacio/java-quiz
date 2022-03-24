@@ -1,6 +1,5 @@
 package com.iandsilvas.bcpquiz.security;
 
-import com.iandsilvas.bcpquiz.controller.ChangeController;
 import com.iandsilvas.bcpquiz.service.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
@@ -33,6 +32,8 @@ public class JwtUtils {
     }
     public boolean validateJwtToken(String authToken) {
         try {
+            logger.info(jwtSecret);
+            logger.info(authToken);
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
         } catch (SignatureException e) {

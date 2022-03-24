@@ -1,29 +1,16 @@
-version: '3.1'
+version: '3.7'
 services:
   db:
-    container_name: quiz_db
+    restart: always
     image: postgres
-    volumes:
-      - quiz_db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB="quiz"
-      - POSTGRES_USER="quiz_user"
-      - POSTGRES_PASSWORD="quiz_pass"
-      - PGDATA=/var/lib/postgresql/data/pgdata
-    networks:
-      - quiz_net
+      - POSTGRES_DB=quiz
+      - POSTGRES_USER=quiz_user
+      - POSTGRES_PASSWORD=quiz_pass
+
   web:
     build: .
-    expose:
-      - "8080"
-    depends_on:
-      - db
-    networks:
-      - quiz_net
-volumes:
-  quiz_db: {}
-networks:
-  quiz_net:
-    driver: bridge
+    ports:
+      - 8080:8080
